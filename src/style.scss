@@ -1,7 +1,40 @@
+/*----Variable---- */
+$radius: 4px;
+$p :10px;
+$dark-bg: #06090f;
+$header-bg: #161b22;
+$border-color: #30363d;
+$text-primary-color: #c9d1d9;
+@use 'sass:map';
+
+$theme-colors: ("success": #28a745, "info": #17a2b8, "warning": #ffc107);
+
+h1,h2 {
+	color: $text-primary-color;
+}
+* {
+	box-sizing: border-box;
+}
 body{
-  background-color: rgba(27, 177, 39, 0.555);
+	margin: 0;
+	padding: 0;
+  background-color:$dark-bg;
+	header{
+		background-color: $header-bg;
+		padding: $p;
+	}
+	.navbar{
+		.navbar-links{
+			flex: 1;
+			border:1px solid $border-color;
+			border-radius: $radius;
+		}
+	}
 	.svg-dog-icon{
 		width: 100px;
 		color: gray;
 	}
 }
+
+
+
