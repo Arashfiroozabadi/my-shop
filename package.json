@@ -4,7 +4,7 @@
   "description": "shopping website",
   "private": true,
   "scripts": {
-    "start:dev": "webpack serve",
+    "dev": "webpack serve",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack"
   },
