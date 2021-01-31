@@ -1,40 +1,133 @@
 /*----Variable---- */
 $radius: 4px;
-$p :10px;
+$p: 10px;
+$icon-font-size: 18px;
+/* ----Colors---- */
+
 $dark-bg: #06090f;
 $header-bg: #161b22;
 $border-color: #30363d;
 $text-primary-color: #c9d1d9;
+$icon-color: white;
+
 @use 'sass:map';
 
-$theme-colors: ("success": #28a745, "info": #17a2b8, "warning": #ffc107);
+$theme-colors: (
+  "success": #28a745,
+  "info": #17a2b8,
+  "warning": #ffc107,
+);
 
-h1,h2 {
-	color: $text-primary-color;
+h1,
+h2 {
+  color: $text-primary-color;
 }
 * {
-	box-sizing: border-box;
-}
-body{
-	margin: 0;
-	padding: 0;
-  background-color:$dark-bg;
-	header{
-		background-color: $header-bg;
-		padding: $p;
-	}
-	.navbar{
-		.navbar-links{
-			flex: 1;
-			border:1px solid $border-color;
-			border-radius: $radius;
-		}
-	}
-	.svg-dog-icon{
-		width: 100px;
-		color: gray;
-	}
+  box-sizing: border-box;
 }
 
+.icons {
+  color: $icon-color;
+}
 
+body {
+  margin: 0;
+  padding: 0;
+  background-color: $dark-bg;
+  .app {
+    height: 100vh;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    flex-direction: column;
 
+    header {
+      padding: $p;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      background-color: $header-bg;
+
+      .avatar {
+        font-style: italic;
+      }
+      .user {
+        font-size: 2em;
+      }
+      .navbar {
+        left: 0;
+        width: 100%;
+        bottom: 0;
+        position: absolute;
+        background-color: $header-bg;
+        .navbar-icon {
+          color: $icon-color;
+          font-size: 1.5em;
+        }
+        .navbar-links {
+          margin: 0;
+          border: 1px solid $border-color;
+          display: flex;
+          padding: $p;
+          list-style: none;
+          border-radius: $radius;
+          justify-content: space-between;
+          li {
+            padding: $p;
+            border-radius: 14px;
+            background-color: $dark-bg;
+            a {
+              display: flex;
+              text-decoration: none;
+              overflow: hidden;
+              &:focus {
+                .links {
+                  width: 50px;
+                  margin-left: 5px;
+                  transform: scaleX(1);
+                }
+              }
+              .icons {
+                font-size: $icon-font-size;
+              }
+              .links {
+                width: 0px;
+                color: $text-primary-color;
+                display: inline-block;
+                transform-origin: -50% 50%;
+                transform: scaleX(0);
+                transition: width 0.5s, margin 0.2s, transform 0.2s 0.3s;
+              }
+            }
+            &:hover {
+              a {
+                .links {
+                  width: 50px;
+                  margin-left: 5px;
+                  transform: scaleX(1);
+                }
+              }
+            }
+            &:last-child {
+              a {
+                .links {
+                  transform-origin: 110% 50%;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    main {
+      flex: 0.9;
+      overflow: scroll;
+    }
+  }
+
+  .svg-dog-icon {
+    width: 100px;
+    color: gray;
+  }
+}
