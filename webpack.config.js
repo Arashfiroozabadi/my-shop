@@ -13,7 +13,7 @@ module.exports = {
   devServer: {
     contentBase: './dist',
     hot: true,
-    host: 'localhost',
+    host: '0.0.0.0',
     port: 3000,
   },
   module: {
@@ -28,8 +28,8 @@ module.exports = {
         use: [
           MCEP.loader,
           'css-loader',
-          'sass-loader',
           'postcss-loader',
+          'sass-loader',
         ],
       },
       {
