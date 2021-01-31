@@ -8,6 +8,7 @@ $dark-bg: #06090f;
 $header-bg: #161b22;
 $border-color: #30363d;
 $text-primary-color: #c9d1d9;
+$text-secondary-color: #c9d1d9a4;
 $icon-color: white;
 
 @use 'sass:map';
@@ -81,6 +82,11 @@ body {
               display: flex;
               text-decoration: none;
               overflow: hidden;
+              &:hover {
+                .links {
+                  color: $text-secondary-color;
+                }
+              }
               &:focus {
                 .links {
                   width: 50px;
@@ -97,7 +103,8 @@ body {
                 display: inline-block;
                 transform-origin: -50% 50%;
                 transform: scaleX(0);
-                transition: width 0.5s, margin 0.2s, transform 0.2s 0.3s;
+                transition: width 0.5s, margin 0.2s, transform 0.2s 0.3s,
+                  color 0.3s;
               }
             }
             &:hover {
