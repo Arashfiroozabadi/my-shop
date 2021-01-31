@@ -4,9 +4,9 @@
   "description": "shopping website",
   "private": true,
   "scripts": {
-    "dev": "webpack serve",
+    "dev": "webpack serve --env NODE_ENV=development",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack"
+    "build": "webpack --env NODE_ENV=production"
   },
   "author": "Arash Firoozabadi",
   "license": "ISC",
