@@ -129,6 +129,7 @@ body {
     }
     main {
       flex: 0.9;
+      padding: $p;
       overflow: scroll;
     }
   }
