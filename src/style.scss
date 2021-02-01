@@ -68,11 +68,9 @@ body {
         }
         .navbar-links {
           margin: 0;
-          border: 1px solid $border-color;
           display: flex;
           padding: $p;
           list-style: none;
-          border-radius: $radius;
           justify-content: space-between;
           li {
             padding: $p;
