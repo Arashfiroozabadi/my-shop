@@ -1,17 +1,24 @@
+@use 'sass:map';
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+
 /*----Variable---- */
 $radius: 4px;
 $p: 10px;
 $icon-font-size: 18px;
-/* ----Colors---- */
 
+@mixin tablet {
+  @media (min-width: 28em) {
+    @content;
+  }
+}
+/* ----Colors---- */
+$trsnsparent-color: #4242427a;
 $dark-bg: #06090f;
 $header-bg: #161b22;
 $border-color: #30363d;
 $text-primary-color: #c9d1d9;
 $text-secondary-color: #c9d1d9a4;
 $icon-color: white;
-
-@use 'sass:map';
 
 $theme-colors: (
   "success": #28a745,
@@ -20,8 +27,14 @@ $theme-colors: (
 );
 
 h1,
-h2 {
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   color: $text-primary-color;
+  font-family: "Roboto", sans-serif;
 }
 * {
   box-sizing: border-box;
@@ -34,6 +47,7 @@ h2 {
 body {
   margin: 0;
   padding: 0;
+  font-size: 1em;
   background-color: $dark-bg;
   .app {
     height: 100vh;
@@ -46,10 +60,11 @@ body {
       padding: $p;
       display: flex;
       flex-wrap: wrap;
+      z-index: 1;
       align-items: center;
       justify-content: space-between;
       background-color: $header-bg;
-      box-shadow: 0px 3px 3px black, 0px 5px 8px -1px black;
+      box-shadow: 0px 3px 3px black, 0px 4px 4px black;
       .avatar {
         font-style: italic;
       }
@@ -125,15 +140,111 @@ body {
         }
       }
     }
+    .pagination {
+      top: 82%;
+      width: 80%;
+      display: flex;
+      padding: $p;
+      position: absolute;
+      align-self: center;
+      align-items: center;
+      border-radius: 3em;
+      justify-content: space-around;
+      background-color: $trsnsparent-color;
+      .icons {
+        transition: transform 0.2s;
+        &:focus {
+          outline: none;
+        }
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+      :first-child {
+        // transform: translateX(0px);
+
+        &:focus {
+          // transform: translateX(-5px) scale(1.1);
+          animation: dragLeft 0.5s ease-in 0s alternate infinite none running;
+        }
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+      :last-child {
+        &:focus {
+          transform: translateX(5px) scale(1.1);
+          animation: dragRight 0.5s ease-in 0s alternate infinite none running;
+        }
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
     main {
       flex: 0.9;
       padding: $p;
-      overflow: scroll;
+      overflow-y: scroll;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .cards {
+        border-radius: $radius;
+        margin: 0px 0px 20px 0px;
+        display: flex;
+        box-shadow: 0px 5px 12px -3px black;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .title {
+          margin: 0px;
+          padding: 0px 10px 0px 10px;
+          align-self: flex-start;
+        }
+        .year {
+          margin: 0px;
+          padding: 0px 10px 10px 10px;
+          align-self: flex-start;
+        }
+        .poster {
+          width: 100%;
+          border-radius: $radius;
+          @include tablet {
+            max-height: 418px;
+          }
+        }
+      }
+      @include tablet {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        align-items: center;
+      }
     }
   }
 
   .svg-dog-icon {
     width: 100px;
     color: gray;
+  }
+}
+
+// Animations
+
+@keyframes dragLeft {
+  0% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(-5px);
+  }
+}
+
+@keyframes dragRight {
+  0% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(5px);
   }
 }
